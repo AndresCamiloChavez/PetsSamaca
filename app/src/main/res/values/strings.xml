@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Samacá</string>
+    <string name="login_title">Iniciar sesión</string>
+    <string name="login_hint_email">Correo electrónico</string>
+    <string name="login_hint_password">Contraseña</string>
+    <string name="login_button">INICIAR SESIÓN</string>
+    <string name="none_account">¿No tienes cuenta?</string>
+    <string name="login_create">Registrarse</string>
+    <string name="haveAccount">¿Ya tienes una cuenta?</string>
+    <string name="signUp">REGISTRARSE</string>
+    <string name="phone">Número de celular</string>
+    <string name="fullname">Nombre y apellido</string>
+    <string name="address">Dirección</string>
+    <string name="urb">Barrio (Localidad)</string>
+    <string name="register">Registro</string>
+    <string name="document">Número de documento</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

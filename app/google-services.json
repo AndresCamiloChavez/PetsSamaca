@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "899952447810",
+    "project_id": "samacacuida",
+    "storage_bucket": "samacacuida.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899952447810:android:497666a0441f060674b8db",
+        "android_client_info": {
+          "package_name": "com.devandreschavez.samaca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899952447810-qvb9oneq5skkgu4kjmrj2f6k2hkkr1s0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.devandreschavez.samaca",
+            "certificate_hash": "bfd65b0cf7f94294a921f00ad2c50c3a651c30a1"
+          }
+        },
+        {
+          "client_id": "899952447810-cr2tm1h1n09si93v2vs8e2uic72u5hu5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr67Onr6XuHHxLoZ_eajvVchPWGfg59SM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899952447810-cr2tm1h1n09si93v2vs8e2uic72u5hu5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="10dp"
+    android:elevation="10dp"
+    >
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgPet"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
+            tools:src="@mipmap/ic_launcher"
+            android:scaleType="centerCrop"
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp">
+
+            <TextView
+                android:id="@+id/tvNamePet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mora"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12-31-2021"
+                android:textColor="@color/md_theme_light_onPrimary"
+                app:chipBackgroundColor="@color/md_theme_light_primary"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/tvSector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Urb Santo Domingo"
+            android:paddingHorizontal="10dp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            />
+
+        <TextView
+            android:id="@+id/tvDescriptionPet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnGoDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:text="Ver"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</com.google.android.material.card.MaterialCardView>

@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.devandreschavez.samaca.core.Resource
-import com.devandreschavez.samaca.repository.home.HomeRepositoryImpl
 import com.devandreschavez.samaca.repository.home.HomeRespository
 import kotlinx.coroutines.Dispatchers
 
@@ -16,6 +15,19 @@ class HomeViewModel(private val repositoryHome: HomeRespository) : ViewModel() {
         try {
             emit(repositoryHome.getPets())
         } catch (e: Exception) {
+            emit(Resource.Failure(e))
+        }
+    }
+
+    fun fetchDynamicLink(
+        namePet: String,
+        descriptionPet: String,
+        imgPet: String
+    ) = liveData {
+        emit(Resource.Loading())
+        try{
+            emit(repositoryHome.generateDynamicLink(namePet, descriptionPet, imgPet))
+        }catch (e: Exception){
             emit(Resource.Failure(e))
         }
     }

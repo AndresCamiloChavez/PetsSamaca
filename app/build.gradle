@@ -55,6 +55,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx'
     //implementation 'com.google.firebase:firebase-database-ktx'
 
+    //dynamic links
+    implementation 'com.google.firebase:firebase-dynamic-links-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
     //Añadimos la dependencia de ReciclerView
     api 'androidx.recyclerview:recyclerview:1.2.0'
     //navigation

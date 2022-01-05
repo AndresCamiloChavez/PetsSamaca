@@ -54,6 +54,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), PetsAdapter.onPetClickLis
                 }
             }
         })
+        tryToGetDynamicLink()
     }
 
     override fun onItemClick(item: Pet) {
@@ -81,6 +82,20 @@ class HomeFragment : Fragment(R.layout.fragment_home), PetsAdapter.onPetClickLis
                 }
             }
         })
+    }
+
+    fun tryToGetDynamicLink(){
+        FirebaseDynamicLinks.getInstance().getDynamicLink(Intent.getIntentOld("")).addOnSuccessListener {
+            if(it != null){
+                val deepLink = it.link
+                if(deepLink?.getQueryParameter("pet") != null){
+                    Toast.makeText(requireContext(), "Hola ${deepLink.getQueryParameter("pet")}", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(requireContext(), "Error no se encontro la mascota ${deepLink?.getQueryParameter("pet")}", Toast.LENGTH_SHORT).show()
+                    Log.d("Failed", "ERROR WITH DYNAMIC LINK OR NO LINK AT ALL");
+                }
+            }
+        }
     }
 
 

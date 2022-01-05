@@ -38,7 +38,8 @@ class HomeDataSource {
     ): Resource<
             Uri?> {
         val dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
-            .setLink(Uri.parse("https://samaca.page.link/Sam?pet=${UUID.randomUUID()}"))
+                //mejorar esta parte porque debemos identificar de alguna manera el intent para redirigir
+            .setLink(Uri.parse("https://samaca.page.link/Sam?pet=${namePet}"))
             .setDomainUriPrefix("https://samaca.page.link").setAndroidParameters(
                 DynamicLink.AndroidParameters.Builder("com.devandreschavez.samaca")
                     .setMinimumVersion(1).build()

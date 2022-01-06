@@ -1,7 +1,10 @@
 package com.devandreschavez.samaca.data.model
 
+import android.os.Parcelable
 import com.google.firebase.Timestamp
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Pet(
     val namePet: String = "",
     val user: User? = User(),
@@ -11,4 +14,4 @@ data class Pet(
     val sector: String = "",
     val sex: String = "",
     val description: String = ""
-)
+): Parcelable

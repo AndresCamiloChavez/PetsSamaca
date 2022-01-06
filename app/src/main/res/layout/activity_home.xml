@@ -5,25 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ui.activities.HomeActivity">
-<!--    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnExit"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/AppBar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Salir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></com.google.android.material.button.MaterialButton>-->
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        android:paddingHorizontal="20dp"
+        android:layout_gravity="clip_vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginVertical="8dp"
+            android:gravity="center_vertical"
+            app:menu="@menu/bnv_menu"
+            app:title="Lost &amp; Found" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragContent"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/btvMenu"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/nav_graph"
-        app:defaultNavHost="true"/>
+        app:layout_constraintTop_toBottomOf="@+id/AppBar"
+        app:navGraph="@navigation/nav_graph" />
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btvMenu"
         android:layout_width="match_parent"

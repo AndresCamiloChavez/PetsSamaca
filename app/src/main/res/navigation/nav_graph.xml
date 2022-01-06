@@ -21,10 +21,23 @@
         <action
             android:id="@+id/action_petsFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_petsFragment_to_detailPetFragment"
+            app:destination="@id/detailPetFragment"
+            app:enterAnim="@android:anim/decelerate_interpolator" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.devandreschavez.samaca.view.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <dialog
+        android:id="@+id/detailPetFragment"
+        android:name="com.devandreschavez.samaca.view.ui.fragments.DetailPetFragment"
+        android:label="fragment_detail_pet"
+        tools:layout="@layout/fragment_detail_pet" >
+        <argument
+            android:name="pet"
+            app:argType="com.devandreschavez.samaca.data.model.Pet" />
+    </dialog>
 </navigation>

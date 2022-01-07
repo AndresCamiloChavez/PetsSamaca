@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/petsFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.devandreschavez.samaca.view.ui.fragments.HomeFragment"
@@ -23,8 +23,14 @@
             app:destination="@id/profileFragment" />
         <action
             android:id="@+id/action_petsFragment_to_detailPetFragment"
-            app:destination="@id/detailPetFragment"
-            app:enterAnim="@android:anim/decelerate_interpolator" />
+            app:destination="@id/detailPetFragment" />
+        <action
+            android:id="@+id/action_petsFragment_to_reportPetFragment"
+            app:destination="@id/reportPetFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -39,5 +45,13 @@
         <argument
             android:name="pet"
             app:argType="com.devandreschavez.samaca.data.model.Pet" />
+        <deeplink app:uri="www.example.com"
+            app:action="android.intent.action.MY_ACTION"
+            app:mimeType="type/subtype"/>
     </dialog>
+    <fragment
+        android:id="@+id/reportPetFragment"
+        android:name="com.devandreschavez.samaca.view.ui.fragments.ReportPetFragment"
+        android:label="fragment_report_pet"
+        tools:layout="@layout/fragment_report_pet" />
 </navigation>

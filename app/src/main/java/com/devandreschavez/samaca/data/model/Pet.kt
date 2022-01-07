@@ -13,5 +13,7 @@ data class Pet(
     val pictureAnimal: String = "",
     val sector: String = "",
     val sex: String = "",
-    val description: String = ""
+    val description: String = "",
+    val status: Boolean = true,
+    val publicationDate: String = ""
 ): Parcelable

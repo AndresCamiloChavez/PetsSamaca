@@ -1,5 +1,6 @@
 package com.devandreschavez.samaca.view.ui.fragments
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.NavDeepLinkBuilder
 import androidx.navigation.fragment.findNavController
 import com.devandreschavez.samaca.R
 import com.devandreschavez.samaca.core.Resource
@@ -23,6 +25,7 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 
 class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickListener{
     private lateinit var binding: FragmentPetsBinding
+    private lateinit var listPets: List<Pet>
     private val viewModel: HomeViewModel by viewModels {
         FactoryPetsViewModel(PetsRepositoryImpl(PetsDataSource()))
     }
@@ -30,6 +33,12 @@ class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickLis
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentPetsBinding.bind(view)
+
+        binding.btnGoReportPet.setOnClickListener {
+            findNavController().navigate(R.id.action_petsFragment_to_reportPetFragment)
+        }
+
+
         viewModel.fetchPets().observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Resource.Loading -> {
@@ -39,6 +48,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickLis
                 is Resource.Success -> {
                     binding.progressHome.visibility = View.GONE
                     binding.rvPetsHome.adapter = PetsAdapter(result.data, this)
+                    listPets = result.data
                     Log.d("Home", "INFORMACIÓN : ${result.data}")
                 }
                 is Resource.Failure -> {
@@ -47,8 +57,11 @@ class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickLis
                     Toast.makeText(requireContext(), "Ocurrió un error", Toast.LENGTH_SHORT).show()
                 }
             }
+
         })
-        tryToGetDynamicLink()
+
+        // no se como hacer esto!!
+//        tryToGetDynamicLink()
     }
 
     override fun onItemClick(pet: Pet) {
@@ -77,19 +90,30 @@ class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickLis
             }
         })
     }
-
-    fun tryToGetDynamicLink(){
-        FirebaseDynamicLinks.getInstance().getDynamicLink(Intent.getIntentOld("")).addOnSuccessListener {
-            if(it != null){
-                val deepLink = it.link
-                if(deepLink?.getQueryParameter("pet") != null){
-                    Toast.makeText(requireContext(), "Hola ${deepLink.getQueryParameter("pet")}", Toast.LENGTH_SHORT).show()
-                }else{
-                    Toast.makeText(requireContext(), "Error no se encontro la mascota ${deepLink?.getQueryParameter("pet")}", Toast.LENGTH_SHORT).show()
-                    Log.d("Failed", "ERROR WITH DYNAMIC LINK OR NO LINK AT ALL");
-                }
-            }
-        }
-    }
+//    fun tryToGetDynamicLink(){
+//
+////        val pendingIntent = NavDeepLinkBuilder(requireContext())
+////            .setGraph(R.navigation.nav_graph)
+////            .setDestination(R.id.android)
+////            .setArguments(args)
+////            .createPendingIntent()
+//        FirebaseDynamicLinks.getInstance().getDynamicLink(Intent.getIntentOld("www.example.com")).addOnSuccessListener {
+//            if(it != null){
+//                val deepLink = it.link
+//                if(deepLink?.getQueryParameter("pet") != null){
+//                    listPets.forEach {
+//                        if(it.namePet == deepLink.getQueryParameter("pet")){
+//                            onItemClick(it)
+//                        }else{
+//                            Toast.makeText(requireContext(), "No se encontro", Toast.LENGTH_SHORT).show()
+//                        }
+//                    }
+//                }else{
+//                    Toast.makeText(requireContext(), "Error no se encontro la mascota ${deepLink?.getQueryParameter("pet")}", Toast.LENGTH_SHORT).show()
+//                    Log.d("Failed", "ERROR WITH DYNAMIC LINK OR NO LINK AT ALL");
+//                }
+//            }
+//        }
+//    }
 
 }

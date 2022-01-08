@@ -93,4 +93,7 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.5.2'
 
+    //lotie
+    implementation 'com.airbnb.android:lottie:4.2.2'
+
 }

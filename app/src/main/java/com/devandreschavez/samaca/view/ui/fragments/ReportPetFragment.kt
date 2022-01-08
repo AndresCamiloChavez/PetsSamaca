@@ -17,7 +17,9 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.devandreschavez.samaca.R
+import com.devandreschavez.samaca.core.Resource
 import com.devandreschavez.samaca.data.model.Pet
 import com.devandreschavez.samaca.data.remote.reporter.ReporterDataSource
 import com.devandreschavez.samaca.databinding.FragmentReportPetBinding
@@ -28,11 +30,13 @@ import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.auth.FirebaseAuth
 import java.time.LocalDate
+import java.util.*
 
 
 class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
     private lateinit var binding: FragmentReportPetBinding
     private lateinit var pet: Pet
+    private var imgRefUri: Uri? = null
     private val user = FirebaseAuth.getInstance().currentUser
     private val viewmodel: ReporterViewModel by viewModels {
         FactoryReporterViewModel(
@@ -46,6 +50,7 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == AppCompatActivity.RESULT_OK) {
                 binding.imgReportPet.setImageURI(result.data?.data)
+                imgRefUri = result.data?.data
             } else {
                 Toast.makeText(requireContext(), "Ocurrió un error", Toast.LENGTH_SHORT).show()
             }
@@ -58,7 +63,7 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
         val constraints =
             CalendarConstraints.Builder().setEnd(MaterialDatePicker.thisMonthInUtcMilliseconds())
                 .build()
-        binding.tvDate.text = LocalDate.now().toString()
+        binding.tvDate.text = "${LocalDate.now().dayOfMonth}/${LocalDate.now().monthValue}/${LocalDate.now().year}"
 
         setData()
 
@@ -71,8 +76,9 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
 
             datePicker.show(childFragmentManager, "Date")
             datePicker.addOnPositiveButtonClickListener {
-
-                binding.tvDate.text = datePicker.headerText
+                val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+                calendar.time = Date(it)
+                binding.tvDate.text = "${calendar.get(Calendar.DAY_OF_MONTH)}/${calendar.get(Calendar.MONTH) + 1}/${calendar.get(Calendar.YEAR)}"
                 Toast.makeText(
                     requireContext(),
                     "Valor ${datePicker.headerText}",
@@ -83,6 +89,9 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
 
         binding.btnUpPhoto.setOnClickListener {
             requestPermission()
+        }
+        binding.btnReporterPet.setOnClickListener {
+            uploadPicture()
         }
 
     }
@@ -111,10 +120,6 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
 
     }
 
-    private fun uploadPicture(uri: Uri?) {
-
-    }
-
     private fun requestPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             when {
@@ -139,5 +144,43 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
         } else {
             Toast.makeText(requireContext(), "Necesita activar permisos", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun uploadPicture() {
+        //validaciones
+        if(true){
+            val pet = Pet(
+                namePet = binding.etNamePet.text.toString(),
+                userId = user!!.uid,
+                date = binding.tvDate.text.toString(),
+                typeAnimal = binding.etMenuType.text.toString(),
+                pictureAnimal = "",
+                sector = binding.etSector.text.toString(),
+                sex = binding.etMenuSex.text.toString(),
+                description = binding.etDescriptionReportPet.text.toString(),
+                status = true,
+                publicationDate = "${LocalDate.now().dayOfMonth}/${LocalDate.now().monthValue}/${LocalDate.now().year}"
+            )
+            if (imgRefUri != null) {
+                viewmodel.uploadReporter(imgRefUri!!, pet).observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+                    when(it){
+                        is Resource.Loading -> {
+                            Toast.makeText(requireContext(), "Loading..", Toast.LENGTH_SHORT).show()
+                        }
+                        is Resource.Success -> {
+                            Toast.makeText(requireContext(), "Todo bien", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(R.id.petsFragment)
+                        }
+                        is Resource.Failure ->{
+                            Toast.makeText(requireContext(), "Ocurrió un error, intente de nuevo", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                })
+            }
+
+        }
+
+
     }
 }

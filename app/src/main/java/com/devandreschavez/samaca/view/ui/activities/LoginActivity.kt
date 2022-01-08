@@ -62,10 +62,12 @@ class LoginActivity : AppCompatActivity() {
                 }
                 is Resource.Success -> {
                     binding.progressLoginBar.visibility = View.GONE
-                    Log.d("Login", "cargando...")
                     goHomeActivity()
                 }
                 is Resource.Failure -> {
+                    binding.progressLoginBar.visibility = View.GONE
+                    binding.btnLogin.isEnabled = true
+                    binding.btnGoRegister.isEnabled = true
                     Log.d("Login", "Error")
                     Toast.makeText(this, "Ocurrió un error intente de nuevo", Toast.LENGTH_SHORT).show()
                 }

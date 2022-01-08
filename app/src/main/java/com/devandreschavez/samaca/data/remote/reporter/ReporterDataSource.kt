@@ -15,7 +15,6 @@ class ReporterDataSource {
         val randomName = UUID.randomUUID().toString()
         val imageRef = FirebaseStorage.getInstance().reference.child("reportpets/$user/$randomName")
         val downloadUrl = imageRef.putFile(img).await().storage.downloadUrl.await().toString()
-
         FirebaseFirestore.getInstance().collection(AppConstants.collectionPets).add(pet.apply { pictureAnimal = downloadUrl }).await()
     }
 }

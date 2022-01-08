@@ -16,6 +16,7 @@
         tools:src="@mipmap/ic_launcher" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnUpPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Subir foto"
@@ -72,21 +73,45 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/date"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/login_activity_login_text"
-                android:layout_marginHorizontal="20dp"
-                android:hint="@string/dateDes">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etDate"
-                    android:layout_width="match_parent"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="30dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="date" />
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:text="Fecha de desaparción"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/tvDate"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Fecha de desaparción" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSelectDate"
+                    style="@style/Widget.Material3.Button.TextButton.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_date"
+                    android:text="Seleccionar fecha"
+                    />
+            </LinearLayout>
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/report_sector"

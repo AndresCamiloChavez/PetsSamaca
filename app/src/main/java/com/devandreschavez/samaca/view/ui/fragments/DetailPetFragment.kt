@@ -27,15 +27,15 @@ class DetailPetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        args.pet.apply {
-            Glide.with(view.context).load(pictureAnimal).into(binding.imgDetailPet)
-            binding.tvNamePetDetail.text = namePet
-            binding.chipDatePetDetail.text = date
-            binding.chipSectorDetail.text = sector
-            binding.tvDescriptionPetDetail.text = description
-            binding.tvEmailDetail.text = user?.email
-            binding.tvNameUserDetail.text = user?.fullName
-            binding.tvPhoneUserDetail.text = user?.phone
+        args.petUser.apply {
+            Glide.with(view.context).load(pet.pictureAnimal).into(binding.imgDetailPet)
+            binding.tvNamePetDetail.text = pet.namePet
+            binding.chipDatePetDetail.text = pet.date
+            binding.chipSectorDetail.text = pet.sector
+            binding.tvDescriptionPetDetail.text = pet.description
+            binding.tvEmailDetail.text = user.email
+            binding.tvNameUserDetail.text = user.fullName
+            binding.tvPhoneUserDetail.text = user.phone
 
         }
     }

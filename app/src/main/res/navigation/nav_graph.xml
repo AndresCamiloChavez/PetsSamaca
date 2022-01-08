@@ -42,12 +42,12 @@
         android:name="com.devandreschavez.samaca.view.ui.fragments.DetailPetFragment"
         android:label="fragment_detail_pet"
         tools:layout="@layout/fragment_detail_pet" >
-        <argument
-            android:name="pet"
-            app:argType="com.devandreschavez.samaca.data.model.Pet" />
         <deeplink app:uri="www.example.com"
             app:action="android.intent.action.MY_ACTION"
             app:mimeType="type/subtype"/>
+        <argument
+            android:name="petUser"
+            app:argType="com.devandreschavez.samaca.data.model.PetUser" />
     </dialog>
     <fragment
         android:id="@+id/reportPetFragment"

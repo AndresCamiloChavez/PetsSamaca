@@ -12,13 +12,14 @@ import com.bumptech.glide.Glide
 import com.devandreschavez.samaca.R
 import com.devandreschavez.samaca.core.Resource
 import com.devandreschavez.samaca.data.model.Pet
+import com.devandreschavez.samaca.data.model.PetUser
 import com.devandreschavez.samaca.databinding.ItemPetBinding
 
-class PetsAdapter(private var listPets: List<Pet>, private val listener: onPetClickListener): RecyclerView.Adapter<BaseViewHolder<*>>() {
+class PetsAdapter(private var listPets: List<PetUser>, private val listener: onPetClickListener): RecyclerView.Adapter<BaseViewHolder<*>>() {
 
 
     interface onPetClickListener{
-        fun onItemClick(item: Pet)
+        fun onItemClick(item: PetUser)
         fun onSharePostPet( name: String, description: String, img:String)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
@@ -32,21 +33,21 @@ class PetsAdapter(private var listPets: List<Pet>, private val listener: onPetCl
     }
     override fun getItemCount(): Int = listPets.size
 
-    inner class PetsViewHolder(itemView: View): BaseViewHolder<Pet>(itemView) {
+    inner class PetsViewHolder(itemView: View): BaseViewHolder<PetUser>(itemView) {
         private val binding = ItemPetBinding.bind(itemView)
-        override fun bind(item: Pet, position: Int) {
+        override fun bind(item: PetUser, position: Int) {
             itemView.setOnClickListener {
                 listener.onItemClick(item)
             }
 
-            binding.tvNamePet.text = item.namePet
-            binding.tvSector.text = "Última vez en ${item.sector}"
-            Glide.with(itemView.context).load(item.pictureAnimal).into(binding.imgPet)
+            binding.tvNamePet.text = item.pet.namePet
+            binding.tvSector.text = "Última vez en ${item.pet.sector}"
+            Glide.with(itemView.context).load(item.pet.pictureAnimal).into(binding.imgPet)
             binding.btnShare.setOnClickListener {
-                listener.onSharePostPet(item.namePet, item.description, item.pictureAnimal)
+                listener.onSharePostPet(item.pet.namePet, item.pet.description, item.pet.pictureAnimal)
             }
-            binding.chipDate.text = item.date.toString()
-            binding.tvDescriptionPet.text = item.description
+            binding.chipDate.text = item.pet.date.toString()
+            binding.tvDescriptionPet.text = item.pet.description
         }
     }
 }

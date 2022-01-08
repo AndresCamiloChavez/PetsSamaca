@@ -1,48 +1,143 @@
 package com.devandreschavez.samaca.view.ui.fragments
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import com.devandreschavez.samaca.R
+import com.devandreschavez.samaca.data.model.Pet
+import com.devandreschavez.samaca.data.remote.reporter.ReporterDataSource
 import com.devandreschavez.samaca.databinding.FragmentReportPetBinding
+import com.devandreschavez.samaca.repository.reporter.ReporRepositoryImpl
+import com.devandreschavez.samaca.viewmodel.reporter.FactoryReporterViewModel
+import com.devandreschavez.samaca.viewmodel.reporter.ReporterViewModel
+import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.firebase.auth.FirebaseAuth
+import java.time.LocalDate
+
 
 class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
-
     private lateinit var binding: FragmentReportPetBinding
+    private lateinit var pet: Pet
+    private val user = FirebaseAuth.getInstance().currentUser
+    private val viewmodel: ReporterViewModel by viewModels {
+        FactoryReporterViewModel(
+            ReporRepositoryImpl(
+                ReporterDataSource()
+            )
+        )
+    }
+
+    private var launchResponse =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == AppCompatActivity.RESULT_OK) {
+                binding.imgReportPet.setImageURI(result.data?.data)
+            } else {
+                Toast.makeText(requireContext(), "Ocurrió un error", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentReportPetBinding.bind(view)
-
+        val constraints =
+            CalendarConstraints.Builder().setEnd(MaterialDatePicker.thisMonthInUtcMilliseconds())
+                .build()
+        binding.tvDate.text = LocalDate.now().toString()
 
         setData()
 
-        binding.btnReporterPet.setOnClickListener {
+        binding.btnSelectDate.setOnClickListener {
             val datePicker =
                 MaterialDatePicker.Builder.datePicker()
-                    .setTitleText("Select date")
-                    .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                    .setCalendarConstraints(constraints)
+                    .setTitleText("Fecha de desaparición")
                     .build()
 
             datePicker.show(childFragmentManager, "Date")
-//            Toast.makeText(requireContext(), "Valor ${datePicker.selection}", Toast.LENGTH_SHORT).show()
+            datePicker.addOnPositiveButtonClickListener {
+
+                binding.tvDate.text = datePicker.headerText
+                Toast.makeText(
+                    requireContext(),
+                    "Valor ${datePicker.headerText}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
+        binding.btnUpPhoto.setOnClickListener {
+            requestPermission()
+        }
+
+    }
+
+    private fun setPhotoFromGalery() {
+        val takePictureIntent = Intent(Intent.ACTION_GET_CONTENT)
+        takePictureIntent.type = "image/*"
+        try {
+            launchResponse.launch(takePictureIntent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(
+                requireContext(),
+                "No se encontro aplicación para abrir la galeria",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     private fun setData() {
         val typePet = listOf("Perro", "Gato", "Otro")
         val adapterPet = ArrayAdapter(requireContext(), R.layout.list_item, typePet)
         (binding.menuType.editText as? AutoCompleteTextView)?.setAdapter(adapterPet)
-        val typeSex = listOf("Macho", "Hembra",)
+        val typeSex = listOf("Macho", "Hembra")
         val adapterSex = ArrayAdapter(requireContext(), R.layout.list_item, typeSex)
         (binding.menuSex.editText as? AutoCompleteTextView)?.setAdapter(adapterSex)
 
     }
 
+    private fun uploadPicture(uri: Uri?) {
+
+    }
+
+    private fun requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            when {
+                ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+                ) == PackageManager.PERMISSION_GRANTED -> {
+                    setPhotoFromGalery()
+                }
+                else -> requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+            }
+        } else {
+            setPhotoFromGalery()
+        }
+    }
+
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) {
+        if (it) {
+            setPhotoFromGalery()
+        } else {
+            Toast.makeText(requireContext(), "Necesita activar permisos", Toast.LENGTH_SHORT).show()
+        }
+    }
 }

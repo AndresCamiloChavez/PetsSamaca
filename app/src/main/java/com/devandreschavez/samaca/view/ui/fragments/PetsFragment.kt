@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.devandreschavez.samaca.R
 import com.devandreschavez.samaca.core.Resource
 import com.devandreschavez.samaca.data.model.Pet
+import com.devandreschavez.samaca.data.model.PetUser
 import com.devandreschavez.samaca.data.remote.pets.PetsDataSource
 import com.devandreschavez.samaca.databinding.FragmentPetsBinding
 import com.devandreschavez.samaca.repository.pets.PetsRepositoryImpl
@@ -25,7 +26,7 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 
 class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickListener{
     private lateinit var binding: FragmentPetsBinding
-    private lateinit var listPets: List<Pet>
+    private lateinit var listPets: List<PetUser>
     private val viewModel: HomeViewModel by viewModels {
         FactoryPetsViewModel(PetsRepositoryImpl(PetsDataSource()))
     }
@@ -40,6 +41,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickLis
 
 
         viewModel.fetchPets().observe(viewLifecycleOwner, Observer { result ->
+
             when (result) {
                 is Resource.Loading -> {
                     binding.progressHome.visibility = View.VISIBLE
@@ -64,8 +66,8 @@ class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickLis
 //        tryToGetDynamicLink()
     }
 
-    override fun onItemClick(pet: Pet) {
-        val action = PetsFragmentDirections.actionPetsFragmentToDetailPetFragment(pet)
+    override fun onItemClick(petUser: PetUser) {
+        val action = PetsFragmentDirections.actionPetsFragmentToDetailPetFragment(petUser)
         findNavController().navigate(action)
     }
 

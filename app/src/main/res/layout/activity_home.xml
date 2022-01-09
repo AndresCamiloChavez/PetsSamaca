@@ -22,8 +22,8 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_marginVertical="8dp"
             android:gravity="center_vertical"
-            app:menu="@menu/bnv_menu"
-            app:title="Lost &amp; Found" />
+            app:menu="@menu/options_menu"
+            app:title="Samacá" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

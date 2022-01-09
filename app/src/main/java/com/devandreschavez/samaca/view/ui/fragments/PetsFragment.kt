@@ -41,7 +41,6 @@ class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickLis
 
 
         viewModel.fetchPets().observe(viewLifecycleOwner, Observer { result ->
-
             when (result) {
                 is Resource.Loading -> {
                     binding.progressHome.visibility = View.VISIBLE
@@ -49,6 +48,10 @@ class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickLis
                 }
                 is Resource.Success -> {
                     binding.progressHome.visibility = View.GONE
+                    if(result.data.isEmpty()){
+                        binding.imgBackgroundNoFound.visibility = View.VISIBLE
+                        return@Observer
+                    }
                     binding.rvPetsHome.adapter = PetsAdapter(result.data, this)
                     listPets = result.data
                     Log.d("Home", "INFORMACIÓN : ${result.data}")

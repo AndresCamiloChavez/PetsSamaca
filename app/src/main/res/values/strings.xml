@@ -18,4 +18,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="namePet">Nombre de la mascota</string>
     <string name="dateDes">Fecha de desaparición</string>
+
+
+    <string name="nodata">No hay publicaciones aún.<br/> <b>¿Es una buena o mala noticia?</b></string>
+
+
 </resources>

@@ -11,6 +11,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    <RelativeLayout
+        android:id="@+id/imgBackgroundNoFound"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:ems="11"
+            android:gravity="center"
+            android:layout_alignTop="@+id/img"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nodata"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="50dp"
+            android:scaleX="0.9"
+            android:scaleY="0.9"
+            android:src="@drawable/ic_nodata" />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/progressHome"
@@ -20,9 +52,7 @@
         <ProgressBar
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
-            android:indeterminateDrawable="@raw/dogloading"
             android:layout_height="wrap_content"/>
-
     </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton

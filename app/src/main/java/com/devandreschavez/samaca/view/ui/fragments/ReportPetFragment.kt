@@ -174,7 +174,7 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
                 publicationDate = "${LocalDate.now().dayOfMonth}/${LocalDate.now().monthValue}/${LocalDate.now().year}"
             )
             if (imgRefUri != null) {
-                                dialog.show()
+                dialog.show()
                 viewmodel.uploadReporter(imgRefUri!!, pet)
                     .observe(viewLifecycleOwner, androidx.lifecycle.Observer {
                         when (it) {
@@ -195,9 +195,6 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
                         }
                     })
             }
-
         }
-
-
     }
 }

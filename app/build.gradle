@@ -63,10 +63,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
     //Añadimos la dependencia de ReciclerView
-    api 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
     //navigation
-    api 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    api 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
 
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 

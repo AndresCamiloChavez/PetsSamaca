@@ -28,4 +28,35 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <TextView
+            android:ems="11"
+            android:gravity="center"
+            android:layout_alignTop="@+id/imgPetsNoFound"
+            android:textSize="20sp"
+            android:layout_marginTop="90dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nodataUserPets"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/imgPetsNoFound"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:src="@drawable/ic_nodata" />
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

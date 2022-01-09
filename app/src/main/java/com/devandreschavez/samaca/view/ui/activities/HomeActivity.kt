@@ -31,6 +31,7 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.reports ->{
+                    findNavController(R.id.fragContent).navigate(R.id.userReportsFragment)
                     true
                 }
                 else -> false

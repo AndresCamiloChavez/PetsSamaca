@@ -15,6 +15,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgUserPetReport"
             android:layout_width="100dp"
+            android:layout_marginHorizontal="7dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
             tools:src="@mipmap/ic_launcher" />
@@ -22,7 +23,6 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:orientation="vertical">
 
@@ -50,8 +50,9 @@
             <TextView
                 android:id="@+id/descriptioUserPetReport"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="80dp"
                 android:padding="5dp"
-                android:layout_height="80dp"
                 android:ellipsize="end"
                 android:text="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
                 />

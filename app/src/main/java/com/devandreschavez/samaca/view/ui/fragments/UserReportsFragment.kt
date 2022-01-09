@@ -17,10 +17,12 @@ import com.devandreschavez.samaca.repository.petsuser.PetsUserRepositoryImpl
 import com.devandreschavez.samaca.view.adapter.PetsByUserAdapter
 import com.devandreschavez.samaca.viewmodel.petsuser.FactoryPetsUserViewModel
 import com.devandreschavez.samaca.viewmodel.petsuser.PetsUserViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 
-class UserReportsFragment : Fragment(R.layout.fragment_user_reports), PetsByUserAdapter.onPetUserClickListener {
+class UserReportsFragment : Fragment(R.layout.fragment_user_reports),
+    PetsByUserAdapter.onPetUserClickListener {
     private lateinit var binding: FragmentUserReportsBinding
     private val user = FirebaseAuth.getInstance().currentUser
     private val viewModel: PetsUserViewModel by viewModels {
@@ -35,38 +37,60 @@ class UserReportsFragment : Fragment(R.layout.fragment_user_reports), PetsByUser
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentUserReportsBinding.bind(view)
 
+        loadInfo()
+    }
+
+    private fun loadInfo(){
         user?.let {
             viewModel.getPetsByUser(it.uid).observe(viewLifecycleOwner, Observer { listPetsUser ->
-                when(listPetsUser){
+                when (listPetsUser) {
                     is Resource.Loading -> {
                         Toast.makeText(requireContext(), "Cargando...", Toast.LENGTH_SHORT).show()
                     }
                     is Resource.Success -> {
+                        if(listPetsUser.data.size > 0){
+
+                        }
                         binding.rvPetsUser.adapter = PetsByUserAdapter(listPetsUser.data, this)
                     }
                     is Resource.Failure -> {
-                        Toast.makeText(requireContext(), "Ocurrió un error", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Ocurrió un error", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             })
         }
     }
 
-    override fun onReportPetUser(userId: String, petId: String, img:String) {
-        viewModel.findPetReport(userId, petId, img).observe(viewLifecycleOwner, Observer {
-            when(it){
-                is Resource.Loading -> {
-                    Toast.makeText(requireContext(), "Cargando...", Toast.LENGTH_SHORT).show()
-                }
-                is Resource.Success -> {
-                    Toast.makeText(requireContext(), "Se elimino", Toast.LENGTH_SHORT).show()
-
-                }
-                is Resource.Failure -> {
-                    Log.d("report", "${it.e}")
-                    Toast.makeText(requireContext(), "Ocurrió un error al eliminar", Toast.LENGTH_SHORT).show()
-                }
+    override fun onReportPetUser(userId: String, petId: String, img: String) {
+        MaterialAlertDialogBuilder(requireContext()).setTitle("¿Estas seguro eliminar la publicación?")
+            .setMessage("Espero que te hayamos ayudado muchas gracias por usar Samacá")
+            .setNegativeButton("Cancelar") { dialog, which ->
+                dialog.cancel()
             }
-        })
+            .setPositiveButton("Aceptar") { dialog, which ->
+                viewModel.findPetReport(userId, petId, img).observe(viewLifecycleOwner, Observer {
+                    when (it) {
+                        is Resource.Loading -> {
+                            Toast.makeText(requireContext(), "Cargando...", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        is Resource.Success -> {
+                            loadInfo()
+                            Toast.makeText(requireContext(), "Se elimino la publicación exitosamente", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        is Resource.Failure -> {
+                            Log.d("report", "${it.e}")
+                            Toast.makeText(
+                                requireContext(),
+                                "Ocurrió un error al eliminar",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                })
+            }.show()
+
     }
 }

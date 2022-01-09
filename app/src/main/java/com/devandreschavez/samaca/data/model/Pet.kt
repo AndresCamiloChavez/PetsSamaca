@@ -2,10 +2,12 @@ package com.devandreschavez.samaca.data.model
 
 import android.os.Parcelable
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.Exclude
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Pet(
+    @get:Exclude var id: String = "",
     val namePet: String = "",
     val userId: String = "",
     val date: String = "",

@@ -24,19 +24,15 @@ class PetsDataSource {
                 FirebaseFirestore.getInstance().collection(AppConstants.collectionPets).get()
                     .await()
             for (pet in querySnapshot.documents) {
-
                 pet.toObject(Pet::class.java).let { resultPet ->
-
                     resultPet?.let { petResult ->
-                    Log.d("Data", "Entromás pet: $petResult")
-                        val user = FirebaseFirestore.getInstance().collection(AppConstants.collectionUser)
-                            .document(pet.getString("userId")!!).get().await().toObject(User::class.java)
-                        Log.d("Data", "valores: $user")
-                        Log.d("Data", "valores: $resultPet")
-
-                        user?.let {resultUser ->
+                        resultPet.id = pet.id
+                        val user =
+                            FirebaseFirestore.getInstance().collection(AppConstants.collectionUser)
+                                .document(pet.getString("userId")!!).get().await()
+                                .toObject(User::class.java)
+                        user?.let { resultUser ->
                             petUsersList.add(PetUser(petResult, resultUser))
-                            Log.d("Data", "valores: $petUsersList")
                         }
                     }
                 }

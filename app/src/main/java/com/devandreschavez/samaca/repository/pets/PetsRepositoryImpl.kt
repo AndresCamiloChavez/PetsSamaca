@@ -16,4 +16,4 @@ class PetsRepositoryImpl(private val dataPetsSource: PetsDataSource) : PetsRespo
         descriptionPet: String,
         imgPet: String
     ): Resource<Uri?> = dataPetsSource.generateDynamicLink(namePet, descriptionPet, imgPet)
- }
+}

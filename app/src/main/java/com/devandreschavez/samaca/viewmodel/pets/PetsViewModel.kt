@@ -31,6 +31,8 @@ class HomeViewModel(private val repositoryPets: PetsRespository) : ViewModel() {
             emit(Resource.Failure(e))
         }
     }
+
+
 }
 
 class FactoryPetsViewModel(private val repositoryPets: PetsRespository) :

@@ -172,8 +172,9 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
                 sex = binding.etMenuSex.text.toString(),
                 description = binding.etDescriptionReportPet.text.toString(),
                 status = true,
-                publicationDate = "${LocalDate.now().dayOfMonth}/${LocalDate.now().monthValue}/${LocalDate.now().year}"
+                publicationDate = Calendar.getInstance().time.toString()
             )
+            binding.btnReporterPet.isEnabled = false
             viewmodel.uploadReporter(imgRefUri, pet)
                 .observe(viewLifecycleOwner, androidx.lifecycle.Observer {
                     when (it) {
@@ -183,9 +184,12 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
                         is Resource.Success -> {
                             dialog.cancel()
                             findNavController().navigate(R.id.petsFragment)
+                            binding.btnReporterPet.isEnabled = true
                         }
                         is Resource.Failure -> {
                             dialog.cancel()
+                            binding.btnReporterPet.isEnabled = true
+
                             Toast.makeText(
                                 requireContext(),
                                 "Ocurrió un error, intente de nuevo",

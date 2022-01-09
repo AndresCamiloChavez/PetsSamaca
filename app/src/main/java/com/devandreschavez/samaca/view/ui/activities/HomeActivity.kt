@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.devandreschavez.samaca.R
@@ -27,6 +28,9 @@ class HomeActivity : AppCompatActivity() {
                     FirebaseAuth.getInstance().signOut()
                     startActivity(Intent(this, LoginActivity::class.java))
                     finish()
+                    true
+                }
+                R.id.reports ->{
                     true
                 }
                 else -> false

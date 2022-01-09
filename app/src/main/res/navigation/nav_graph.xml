@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_homeFragment3_to_petsFragment"
             app:destination="@id/petsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_userReportsFragment"
+            app:destination="@id/userReportsFragment" />
     </fragment>
     <fragment
         android:id="@+id/petsFragment"
@@ -54,4 +57,9 @@
         android:name="com.devandreschavez.samaca.view.ui.fragments.ReportPetFragment"
         android:label="fragment_report_pet"
         tools:layout="@layout/fragment_report_pet" />
+    <fragment
+        android:id="@+id/userReportsFragment"
+        android:name="com.devandreschavez.samaca.view.ui.fragments.UserReportsFragment"
+        android:label="fragment_user_reports"
+        tools:layout="@layout/fragment_user_reports" />
 </navigation>

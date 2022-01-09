@@ -78,7 +78,7 @@ class LoginActivity : AppCompatActivity() {
                     binding.progressLoginBar.visibility = View.GONE
                     binding.btnLogin.isEnabled = true
                     binding.btnGoRegister.isEnabled = true
-                    Log.d("Login", "Error")
+                    Log.d("Login", "Error ${result.e}")
                     Toast.makeText(this, "Ocurrió un error, intente de nuevo", Toast.LENGTH_SHORT).show()
                 }
             }

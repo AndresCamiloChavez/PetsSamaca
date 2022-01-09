@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ArrayAdapter
@@ -55,7 +56,7 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
                 binding.imgReportPet.setImageURI(result.data?.data)
                 imgRefUri = result.data?.data
             } else {
-                Toast.makeText(requireContext(), "Ocurrió un error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "No selecciono ninguna imagen", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -160,7 +161,7 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
             .setTitle("!Ánimo!, volverá pronto")
             .create()
         //validaciones
-        if (true) {
+        if (validations()) {
             val pet = Pet(
                 namePet = binding.etNamePet.text.toString(),
                 userId = user!!.uid,
@@ -173,27 +174,57 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
                 status = true,
                 publicationDate = "${LocalDate.now().dayOfMonth}/${LocalDate.now().monthValue}/${LocalDate.now().year}"
             )
-            if (imgRefUri != null) {
-                dialog.show()
-                viewmodel.uploadReporter(imgRefUri!!, pet)
-                    .observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-                        when (it) {
-                            is Resource.Loading -> {
-                            }
-                            is Resource.Success -> {
-                                dialog.cancel()
-                                findNavController().navigate(R.id.petsFragment)
-                            }
-                            is Resource.Failure -> {
-                                dialog.cancel()
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Ocurrió un error, intente de nuevo",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
+            viewmodel.uploadReporter(imgRefUri, pet)
+                .observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+                    when (it) {
+                        is Resource.Loading -> {
+                            dialog.show()
                         }
-                    })
+                        is Resource.Success -> {
+                            dialog.cancel()
+                            findNavController().navigate(R.id.petsFragment)
+                        }
+                        is Resource.Failure -> {
+                            dialog.cancel()
+                            Toast.makeText(
+                                requireContext(),
+                                "Ocurrió un error, intente de nuevo",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                })
+        }
+    }
+
+    private fun validations(): Boolean {
+        Log.d("value", " edit text -> ${binding.etMenuType.text}")
+        Log.d("value", " edit text -> ${binding.etMenuType.text.isNullOrEmpty()}")
+        return when {
+            binding.etNamePet.text?.trim().isNullOrEmpty() -> {
+                binding.etNamePet.error = "Ingrese un nombre"
+                false
+            }
+            binding.etSector.text.isNullOrEmpty() -> {
+                binding.etSector.error = "Ingrese un valor"
+                false
+            }
+            binding.etMenuSex.text.isNullOrEmpty() -> {
+                binding.etMenuSex.error = "Seleccione un valor"
+                false
+            }
+            binding.etMenuType.text.isNullOrEmpty() -> {
+                binding.etMenuSex.error = null
+                binding.etMenuType.error = "Seleccione un valor"
+                false
+            }
+            binding.etDescriptionReportPet.text.isNullOrEmpty() -> {
+
+                binding.etDescriptionReportPet.error = "Agregue una descripción "
+                false
+            }
+            else -> {
+                true
             }
         }
     }

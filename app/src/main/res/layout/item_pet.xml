@@ -20,7 +20,7 @@
             android:layout_height="150dp"
             android:scaleType="centerCrop"
             app:shapeAppearance="?attr/shapeAppearanceMediumComponent"
-            tools:src="@mipmap/ic_launcher"/>
+            android:src="@drawable/noimage"/>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

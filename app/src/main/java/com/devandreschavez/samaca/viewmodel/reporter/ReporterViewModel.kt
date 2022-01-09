@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 
 class ReporterViewModel(private val repo: ReporRepository): ViewModel() {
 
-    fun uploadReporter(img: Uri, pet: Pet) = liveData(Dispatchers.IO) {
+    fun uploadReporter(img: Uri?, pet: Pet) = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
             emit(Resource.Success(repo.uploadReport(img, pet)))

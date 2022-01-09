@@ -60,7 +60,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etFullName"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:inputType="text"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,7 +108,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etUrb"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:inputType="text"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -122,7 +124,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAddress"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:inputType="text"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -136,7 +139,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etEmailRegister"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -147,6 +151,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:hint="@string/login_hint_password"
                     app:passwordToggleEnabled="true"
+                    app:errorEnabled="true"
                     app:errorIconDrawable="@null">
 
                     <com.google.android.material.textfield.TextInputEditText

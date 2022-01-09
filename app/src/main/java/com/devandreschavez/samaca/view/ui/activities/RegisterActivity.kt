@@ -57,7 +57,7 @@ class RegisterActivity : AppCompatActivity() {
                 etFullName.text.isNullOrEmpty() -> {
                     etFullName.error = "Ingrese un nombre y apellido"
                 }
-                etPhone.text.isNullOrEmpty() -> {
+                etPhone.text.toString().length < 7 -> {
                     etPhone.error = "Ingrese un número de celular"
                 }
                 etPasswordRegister.text.toString().length < 7 -> {
@@ -89,14 +89,11 @@ class RegisterActivity : AppCompatActivity() {
                             }
                             is Resource.Failure -> {
                                 binding.progressRegister.visibility = View.GONE
-
                                 Toast.makeText(
                                     this@RegisterActivity,
-                                    "ocurrió un error, intente de nuevo",
+                                    "Ocurrió un error, intente de nuevo",
                                     Toast.LENGTH_SHORT
                                 ).show()
-                                Log.d(TAG, "Cargando registro ${it}")
-
                             }
                         }
                     })

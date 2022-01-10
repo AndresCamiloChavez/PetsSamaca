@@ -202,8 +202,6 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
     }
 
     private fun validations(): Boolean {
-        Log.d("value", " edit text -> ${binding.etMenuType.text}")
-        Log.d("value", " edit text -> ${binding.etMenuType.text.isNullOrEmpty()}")
         return when {
             binding.etNamePet.text?.trim().isNullOrEmpty() -> {
                 binding.etNamePet.error = "Ingrese un nombre"

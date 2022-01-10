@@ -1,7 +1,6 @@
 package com.devandreschavez.samaca.data.remote.pets
 
 import android.net.Uri
-import android.util.Log
 import com.devandreschavez.samaca.application.AppConstants
 import com.devandreschavez.samaca.core.Resource
 import com.devandreschavez.samaca.data.model.Pet
@@ -9,7 +8,6 @@ import com.devandreschavez.samaca.data.model.PetUser
 import com.devandreschavez.samaca.data.model.User
 import com.google.firebase.dynamiclinks.DynamicLink
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await

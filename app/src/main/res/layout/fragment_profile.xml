@@ -17,14 +17,14 @@
            android:layout_height="wrap_content"
            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
            android:textSize="30sp"
-           android:text="Andres Camilo Chavez"/>
+           tools:text="Andres Camilo Chavez"/>
        <TextView
            android:id="@+id/tvEmailUserProfile"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
            android:textSize="20sp"
-           android:text="andres.cz.chavez@gmail.com"/>
+           tools:text="andres.cz.chavez@gmail.com"/>
 
        <com.google.android.material.textview.MaterialTextView
            android:layout_marginTop="10dp"
@@ -39,7 +39,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:textSize="20sp"
-           android:text="323143455"/>
+           tools:text="323143455"/>
        <com.google.android.material.textview.MaterialTextView
            android:layout_marginTop="10dp"
            android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:textSize="20sp"
-           android:text="Calle 34234 43"/>
+           tools:text="Calle 34234 43"/>
 
        <com.google.android.material.textview.MaterialTextView
            android:layout_marginTop="10dp"
@@ -68,16 +68,8 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:textSize="20sp"
-           android:text="San Lorenzo"/>
+           tools:text="San Lorenzo"/>
 
-       <com.google.android.material.button.MaterialButton
-           android:id="@+id/btnChangePassword"
-           android:layout_marginTop="10dp"
-           style="@style/Widget.Material3.Button.TextButton"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="Cambiar contraseña"
-           />
        <com.google.android.material.button.MaterialButton
            android:id="@+id/btnEditProfile"
            android:layout_marginTop="10dp"
@@ -85,6 +77,19 @@
            android:layout_height="wrap_content"
            android:text="EDITAR PERFIL"
            />
+       <com.google.android.material.card.MaterialCardView
+           android:layout_width="match_parent"
+           android:layout_margin="30dp"
+           android:layout_height="wrap_content">
+           <com.google.android.material.textview.MaterialTextView
+               android:padding="10dp"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textSize="15sp"
+               android:justificationMode="inter_word"
+               android:text="¡Hola!, al momento de actualizar tus datos no te preocupes si no se ven los cambios, tan solo tienes que cerrar la App y volver abrir para ver los cambios. Estamos trabajando en eso y en mucho más"/>
+
+       </com.google.android.material.card.MaterialCardView>
 
    </androidx.appcompat.widget.LinearLayoutCompat>
 

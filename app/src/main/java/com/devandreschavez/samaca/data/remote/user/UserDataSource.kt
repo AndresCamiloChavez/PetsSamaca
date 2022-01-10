@@ -19,4 +19,12 @@ class UserDataSource {
         }
         return Resource.Success(usuario)
     }
+
+    suspend fun updateUser(phone: String, address: String, urb: String): Resource.Success<Unit> {
+        withContext(Dispatchers.IO) {
+            FirebaseFirestore.getInstance().collection(AppConstants.collectionUser)
+                .document(userFirebase?.uid.toString()).update("phone", phone, "urb", urb, "address", address).await()
+        }
+        return Resource.Success(Unit)
+    }
 }

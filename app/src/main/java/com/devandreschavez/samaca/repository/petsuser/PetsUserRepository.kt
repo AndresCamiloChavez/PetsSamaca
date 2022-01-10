@@ -5,6 +5,6 @@ import com.devandreschavez.samaca.data.model.Pet
 
 interface PetsUserRepository {
     suspend fun getPetsByUser(userId: String): Resource<List<Pet>>
-    suspend fun findPetReport(userId: String, petId: String,  img: String)
+    suspend fun findPetReport(userId: String, petId: String,  img: String): Unit
 
 }

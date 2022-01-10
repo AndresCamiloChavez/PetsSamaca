@@ -3,17 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/drawable/dialogedit.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/drawable/gradient.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/activity_auth.xml" value="0.16" />
         <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/activity_main.xml" value="0.17239583333333333" />
         <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/activity_register.xml" value="0.18" />
+        <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/dialogedit.xml" value="0.25" />
         <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/fragment_detail_pet.xml" value="0.23357664233576642" />
+        <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/fragment_edit_profile.xml" value="0.1" />
         <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/fragment_pets.xml" value="0.18" />
-        <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/fragment_register.xml" value="0.1" />
         <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/fragment_report_pet.xml" value="0.33" />
         <entry key="..\:/Users/USUARIO/Documents/ProyectosAndroidAndres/Samaca/app/src/main/res/layout/fragment_user_reports.xml" value="0.18" />

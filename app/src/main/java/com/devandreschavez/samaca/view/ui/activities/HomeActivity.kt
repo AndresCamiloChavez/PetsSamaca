@@ -1,13 +1,17 @@
 package com.devandreschavez.samaca.view.ui.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.plusAssign
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.devandreschavez.samaca.R
+import com.devandreschavez.samaca.core.KeepStateNavigator
 import com.devandreschavez.samaca.databinding.ActivityHomeBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -20,8 +24,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        configNav()
-
+//        configNav()
+        configPerNav()
         binding.topAppBar.setOnMenuItemClickListener {
             when(it.itemId){
                 R.id.exitOption ->{
@@ -31,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.reports ->{
-                    findNavController(R.id.fragContent).navigate(R.id.userReportsFragment)
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.userReportsFragment)
                     true
                 }
                 else -> false
@@ -39,8 +43,19 @@ class HomeActivity : AppCompatActivity() {
         }
     }
     fun configNav(){
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragContent) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
-        findViewById<BottomNavigationView>(R.id.btvMenu).setupWithNavController(navController)
+        findViewById<BottomNavigationView>(R.id.bottom_nav).setupWithNavController(navController)
+    }
+    @SuppressLint("RestrictedApi")
+    fun configPerNav(){
+        val navController = findNavController(R.id.nav_host_fragment)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)!!
+
+        val navigator = KeepStateNavigator(this,navHostFragment.childFragmentManager, R.id.nav_host_fragment)
+        navController.navigatorProvider += navigator
+        navController.setGraph(R.navigation.nav_graph)
+//        NavigationUI.setupWithNavController(binding.bottomNav, navController)
+        binding.bottomNav.setupWithNavController(navController)
     }
 }

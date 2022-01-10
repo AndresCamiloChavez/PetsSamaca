@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/petsFragment">
-    <fragment
+    <keep_state_fragment
         android:id="@+id/homeFragment"
         android:name="com.devandreschavez.samaca.view.ui.fragments.HomeFragment"
         android:label="fragment_home"
@@ -12,8 +12,8 @@
         <action
             android:id="@+id/action_homeFragment3_to_petsFragment"
             app:destination="@id/petsFragment" />
-    </fragment>
-    <fragment
+    </keep_state_fragment>
+    <keep_state_fragment
         android:id="@+id/petsFragment"
         android:name="com.devandreschavez.samaca.view.ui.fragments.PetsFragment"
         android:label="fragment_pets"
@@ -31,8 +31,8 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
-    </fragment>
-    <fragment
+    </keep_state_fragment>
+    <keep_state_fragment
         android:id="@+id/profileFragment"
         android:name="com.devandreschavez.samaca.view.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
@@ -49,12 +49,12 @@
             android:name="petUser"
             app:argType="com.devandreschavez.samaca.data.model.PetUser" />
     </dialog>
-    <fragment
+    <keep_state_fragment
         android:id="@+id/reportPetFragment"
         android:name="com.devandreschavez.samaca.view.ui.fragments.ReportPetFragment"
         android:label="fragment_report_pet"
         tools:layout="@layout/fragment_report_pet" />
-    <fragment
+    <keep_state_fragment
         android:id="@+id/userReportsFragment"
         android:name="com.devandreschavez.samaca.view.ui.fragments.UserReportsFragment"
         android:label="fragment_user_reports"

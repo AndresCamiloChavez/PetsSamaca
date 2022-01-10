@@ -40,7 +40,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickLis
         }
 
 
-        viewModel.fetchPets().observe(viewLifecycleOwner, Observer { result ->
+        viewModel.requestPets.observe(viewLifecycleOwner, Observer { result ->
             when (result) {
                 is Resource.Loading -> {
                     binding.progressHome.visibility = View.VISIBLE

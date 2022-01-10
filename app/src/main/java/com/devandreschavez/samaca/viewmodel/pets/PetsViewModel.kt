@@ -10,6 +10,16 @@ import kotlinx.coroutines.Dispatchers
 
 class HomeViewModel(private val repositoryPets: PetsRespository) : ViewModel() {
 
+
+    val requestPets = liveData(viewModelScope.coroutineContext + Dispatchers.IO) {
+        emit(Resource.Loading())
+        try {
+            emit(repositoryPets.getPets())
+        } catch (e: Exception) {
+            emit(Resource.Failure(e))
+        }
+    }
+
     fun fetchPets() = liveData(viewModelScope.coroutineContext + Dispatchers.IO) {
         emit(Resource.Loading())
         try {

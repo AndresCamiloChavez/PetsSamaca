@@ -9,6 +9,14 @@ import java.lang.Exception
 
 class UserViewModel(private val userRepository: UserRepository): ViewModel() {
 
+    val fetchUserL = liveData {
+        emit(Resource.Loading())
+        try {
+            emit(userRepository.getUser())
+        }catch (e: Exception){
+            emit(Resource.Failure(e))
+        }
+    }
     fun fetchUser() = liveData {
         emit(Resource.Loading())
         try {

@@ -27,7 +27,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProfileBinding.bind(view)
 
-        viewModel.fetchUser().observe(viewLifecycleOwner, Observer { resultUser ->
+        viewModel.fetchUserL.observe(viewLifecycleOwner, Observer { resultUser ->
             when(resultUser){
                 is Resource.Loading -> {
                     Toast.makeText(requireContext(), "Cargandor", Toast.LENGTH_SHORT).show()

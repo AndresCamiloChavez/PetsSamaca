@@ -45,15 +45,18 @@ class UserReportsFragment : Fragment(R.layout.fragment_user_reports),
             viewModel.getPetsByUser(it.uid).observe(viewLifecycleOwner, Observer { listPetsUser ->
                 when (listPetsUser) {
                     is Resource.Loading -> {
-                        Toast.makeText(requireContext(), "Cargando...", Toast.LENGTH_SHORT).show()
+                        binding.progressPetsUser.visibility = View.VISIBLE
                     }
                     is Resource.Success -> {
-                        if(listPetsUser.data.size > 0){
-
-                        }
+                        binding.progressPetsUser.visibility = View.GONE
                         binding.rvPetsUser.adapter = PetsByUserAdapter(listPetsUser.data, this)
+                        if(listPetsUser.data.isEmpty()){
+                            binding.containerBackUserPets.visibility = View.VISIBLE
+                            return@Observer
+                        }
                     }
                     is Resource.Failure -> {
+                        binding.progressPetsUser.visibility = View.GONE
                         Toast.makeText(requireContext(), "Ocurrió un error", Toast.LENGTH_SHORT)
                             .show()
                     }

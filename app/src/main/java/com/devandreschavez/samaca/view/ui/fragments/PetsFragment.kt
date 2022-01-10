@@ -44,7 +44,6 @@ class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickLis
             when (result) {
                 is Resource.Loading -> {
                     binding.progressHome.visibility = View.VISIBLE
-                    Log.d("Home", "Cargando la info")
                 }
                 is Resource.Success -> {
                     binding.progressHome.visibility = View.GONE
@@ -54,7 +53,6 @@ class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickLis
                     }
                     binding.rvPetsHome.adapter = PetsAdapter(result.data, this)
                     listPets = result.data
-                    Log.d("Home", "INFORMACIÓN : ${result.data}")
                 }
                 is Resource.Failure -> {
                     binding.progressHome.visibility = View.GONE

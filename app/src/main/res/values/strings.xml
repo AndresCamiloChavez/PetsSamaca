@@ -20,8 +20,8 @@
     <string name="dateDes">Fecha de desaparición</string>
 
 
-    <string name="nodata">No tienes reportes.<br /> <b>¿Es una buena o mala noticia?</b></string>
-    <string name="nodataUserPets">No hay publicaciones aún.<br /> <b>¿Es una buena o mala noticia?</b></string>
+    <string name="nodataUserPets">No tienes reportes.<br /> <b>¡Sigue disfrutando de la App!</b></string>
+    <string name="nodata">No hay publicaciones aún.<br /> <b>¿Es una buena o mala noticia?</b></string>
     <string name="userReports">Estas son tus mascotas reportadas.</string>
 
 

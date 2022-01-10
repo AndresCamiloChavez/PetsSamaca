@@ -8,14 +8,11 @@ import com.devandreschavez.samaca.R
 import com.devandreschavez.samaca.databinding.FragmentHomeBinding
 
 
-class HomeFragment : Fragment(R.layout.fragment_home){
+class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var binding: FragmentHomeBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentHomeBinding.bind(view)
 
-        binding.button.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_userReportsFragment)
-        }
     }
 }

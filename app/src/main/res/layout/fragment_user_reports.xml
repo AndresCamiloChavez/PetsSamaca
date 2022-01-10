@@ -29,11 +29,13 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
     <RelativeLayout
+        android:id="@+id/containerBackUserPets"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TextView
@@ -57,6 +59,17 @@
             android:scaleY="0.7"
             android:src="@drawable/ic_nodata" />
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/progressPetsUser"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <ProgressBar
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

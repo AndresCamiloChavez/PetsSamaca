@@ -9,7 +9,7 @@
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="600px"
+        android:layout_height="700px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,8 +30,8 @@
         android:id="@+id/tvNamePetDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_marginHorizontal="25dp"
+        android:layout_marginVertical="30dp"
         android:ems="7"
         android:fontFamily="@font/poppins"
         android:text="Mora Mora"
@@ -39,42 +39,46 @@
         android:textColor="#FFF"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+        app:layout_constraintBottom_toTopOf="@id/materialCardView3"
         app:layout_constraintEnd_toEndOf="@+id/frameLayout"
         app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:visibility="gone"
-        android:layout_margin="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:padding="0dp"
         android:src="@drawable/ic_share"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/tvNamePetDetail"
         app:layout_constraintEnd_toEndOf="@+id/frameLayout"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0."
         app:tint="#FFF" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView3"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:paddingVertical="10dp"
-        android:background="#FFFFFF"
-        android:gravity="start"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:translationY="-15dp"
+        app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-        app:layout_constraintVertical_bias="0">
+        app:strokeWidth="0dp">
 
-        <androidx.cardview.widget.CardView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
-            android:layout_marginHorizontal="10dp">
+            android:layout_height="match_parent"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:paddingVertical="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -92,12 +96,13 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical">
+
                         <TextView
-                            android:textAlignment="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins"
                             android:text="Visto por última vez en"
+                            android:textAlignment="center"
                             android:textSize="15sp" />
 
                         <com.google.android.material.chip.Chip
@@ -107,6 +112,7 @@
                             android:fontFamily="@font/poppins"
                             tools:text="Barrio Santo domingo" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
+
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -115,11 +121,11 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:textAlignment="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins"
                             android:text="Fecha de desaparción"
+                            android:textAlignment="center"
                             android:textSize="15sp" />
 
                         <com.google.android.material.chip.Chip
@@ -131,11 +137,13 @@
                             app:chipIcon="@drawable/ic_date" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </LinearLayout>
+
                 <View
                     android:id="@+id/divider"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="?android:attr/listDivider" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -152,82 +160,82 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/poppins"
+                    android:justificationMode="inter_word"
                     android:text="is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"
                     android:textSize="15sp" />
             </LinearLayout>
 
-
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="7dp"
-            app:cardCornerRadius="10dp">
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="7dp"
+                app:cardCornerRadius="10dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp"
-                    android:text="Información de contacto"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:backgroundTint="#C39F1B9F"
+                    android:padding="10dp">
 
-                <TextView
-                    android:textSize="17sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nombre"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Información de contacto"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvNameUserDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="16sp"
-                    android:text="Andres Camilo Chavez Ramirez" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nombre"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:textSize="17sp"
+                    <TextView
+                        android:id="@+id/tvNameUserDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="Andres Camilo Chavez Ramirez"
+                        android:textSize="16sp" />
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Número de celular"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Número de celular"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:textSize="16sp"
-                    android:id="@+id/tvPhoneUserDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3212768756"
-                    android:textColor="#5E5EFF" />
+                    <TextView
+                        android:id="@+id/tvPhoneUserDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3212768756"
 
-                <TextView
-                    android:textSize="17sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Correo electrónico"
-                    android:textStyle="bold" />
+                        android:textColor="#5E5EFF"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/tvEmailDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="16sp"
-                    android:text="andres.cz.chavez@gmail.com" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Correo electrónico"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
 
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <TextView
+                        android:id="@+id/tvEmailDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="andres.cz.chavez@gmail.com"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

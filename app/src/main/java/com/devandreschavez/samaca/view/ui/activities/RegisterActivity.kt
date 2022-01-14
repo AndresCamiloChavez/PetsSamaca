@@ -69,7 +69,7 @@ class RegisterActivity : AppCompatActivity() {
                 else -> {
                     val user = User(
                         etFullName.text.toString(),
-                        etDocument.text.toString(),
+                        "0",
                         etPhone.text.toString(),
                         etAddress.text.toString(),
                         etEmailRegister.text.toString(),

@@ -65,27 +65,27 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/register_entity_document_input_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/register_entity_fullname_input_layout"
-                    android:layout_marginHorizontal="20dp"
-                    android:hint="@string/document">
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:id="@+id/register_entity_document_input_layout"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/register_entity_fullname_input_layout"-->
+<!--                    android:layout_marginHorizontal="20dp"-->
+<!--                    android:hint="@string/document">-->
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etDocument"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
+<!--                    <com.google.android.material.textfield.TextInputEditText-->
+<!--                        android:id="@+id/etDocument"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:inputType="number" />-->
 
-                </com.google.android.material.textfield.TextInputLayout>
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/register_entity_phone_input_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/register_entity_document_input_layout"
+                    android:layout_below="@+id/register_entity_fullname_input_layout"
                     android:layout_marginHorizontal="20dp"
                     android:hint="@string/phone">
 

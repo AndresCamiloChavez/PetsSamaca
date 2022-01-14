@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".view.ui.fragments.DetailPetFragment">
 
+
+
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
@@ -25,6 +27,8 @@
             android:layout_height="match_parent"
             android:background="@drawable/gradient" />
     </FrameLayout>
+
+
 
     <TextView
         android:id="@+id/tvNamePetDetail"
@@ -237,5 +241,4 @@
             </androidx.cardview.widget.CardView>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </com.google.android.material.card.MaterialCardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

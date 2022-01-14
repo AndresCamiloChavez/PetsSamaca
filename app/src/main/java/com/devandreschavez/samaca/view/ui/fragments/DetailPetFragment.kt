@@ -49,9 +49,13 @@ class DetailPetFragment : BottomSheetDialogFragment() {
         binding.tvPhoneUserDetail.setOnClickListener {
            goPhone()
         }
+
+
+
     }
     private fun goPhone(){
         val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${binding.tvPhoneUserDetail.text}"))
         startActivity(intent)
     }
+
 }

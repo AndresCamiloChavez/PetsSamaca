@@ -3,19 +3,17 @@ package com.devandreschavez.samaca.view.ui.fragments
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
@@ -31,7 +29,6 @@ import com.devandreschavez.samaca.viewmodel.reporter.ReporterViewModel
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.dialog.MaterialDialogs
 import com.google.firebase.auth.FirebaseAuth
 import java.time.LocalDate
 import java.util.*
@@ -56,7 +53,8 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
                 binding.imgReportPet.setImageURI(result.data?.data)
                 imgRefUri = result.data?.data
             } else {
-                Toast.makeText(requireContext(), "No selecciono ninguna imagen", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "No selecciono ninguna imagen", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 
@@ -67,12 +65,12 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
         val constraints =
             CalendarConstraints.Builder().setEnd(MaterialDatePicker.thisMonthInUtcMilliseconds())
                 .build()
-        binding.tvDate.text =
-            "${LocalDate.now().dayOfMonth}/${LocalDate.now().monthValue}/${LocalDate.now().year}"
+
+        binding.etDateReportPet.setText("${LocalDate.now().dayOfMonth}/${LocalDate.now().monthValue}/${LocalDate.now().year}")
 
         setData()
 
-        binding.btnSelectDate.setOnClickListener {
+        binding.etDateReportPet.setOnClickListener {
             val datePicker =
                 MaterialDatePicker.Builder.datePicker()
                     .setCalendarConstraints(constraints)
@@ -83,15 +81,11 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
             datePicker.addOnPositiveButtonClickListener {
                 val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
                 calendar.time = Date(it)
-                binding.tvDate.text =
+                binding.etDateReportPet.setText(
                     "${calendar.get(Calendar.DAY_OF_MONTH)}/${calendar.get(Calendar.MONTH) + 1}/${
                         calendar.get(Calendar.YEAR)
                     }"
-                Toast.makeText(
-                    requireContext(),
-                    "Valor ${datePicker.headerText}",
-                    Toast.LENGTH_SHORT
-                ).show()
+                )
             }
         }
 
@@ -165,7 +159,7 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
             val pet = Pet(
                 namePet = binding.etNamePet.text.toString(),
                 userId = user!!.uid,
-                date = binding.tvDate.text.toString(),
+                date = binding.etDateReportPet.text.toString(),
                 typeAnimal = binding.etMenuType.text.toString(),
                 pictureAnimal = "",
                 sector = binding.etSector.text.toString(),
@@ -230,4 +224,5 @@ class ReportPetFragment : Fragment(R.layout.fragment_report_pet) {
             }
         }
     }
+
 }

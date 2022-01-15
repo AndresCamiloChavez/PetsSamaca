@@ -9,6 +9,7 @@ import com.devandreschavez.samaca.data.model.User
 import com.google.firebase.dynamiclinks.DynamicLink
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
@@ -19,7 +20,8 @@ class PetsDataSource {
         withContext(Dispatchers.IO) {
 
             val querySnapshot =
-                FirebaseFirestore.getInstance().collection(AppConstants.collectionPets).get()
+                FirebaseFirestore.getInstance().collection(AppConstants.collectionPets)
+                    .orderBy("date", Query.Direction.ASCENDING).get()
                     .await()
             for (pet in querySnapshot.documents) {
                 pet.toObject(Pet::class.java).let { resultPet ->

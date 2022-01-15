@@ -71,7 +71,6 @@ class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickLis
         val action = PetsFragmentDirections.actionPetsFragmentToDetailPetFragment(petUser)
         findNavController().navigate(action)
     }
-
     override fun onSharePostPet(name: String, description: String, img: String) {
         viewModel.fetchDynamicLink(name, description, img).observe(viewLifecycleOwner, Observer {
             when(it){

@@ -90,7 +90,18 @@
                android:text="¡Hola!, al momento de actualizar tus datos no te preocupes si no se ven los cambios, tan solo tienes que cerrar la App y volver abrir para ver los cambios. Estamos trabajando en eso y en mucho más"/>
 
        </com.google.android.material.card.MaterialCardView>
-
+       <com.google.android.gms.ads.AdView
+           xmlns:ads="http://schemas.android.com/apk/res-auto"
+           android:id="@+id/adViewProfile"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:layout_gravity="center"
+           android:layout_alignParentBottom="true"
+           ads:adSize="SMART_BANNER"
+           ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+       </com.google.android.gms.ads.AdView>
    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </FrameLayout>

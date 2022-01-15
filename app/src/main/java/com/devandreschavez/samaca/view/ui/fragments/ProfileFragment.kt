@@ -20,6 +20,7 @@ import com.devandreschavez.samaca.databinding.FragmentProfileBinding
 import com.devandreschavez.samaca.repository.user.UserRepositoryImpl
 import com.devandreschavez.samaca.viewmodel.user.FactoryUserViewModel
 import com.devandreschavez.samaca.viewmodel.user.UserViewModel
+import com.google.android.gms.ads.AdRequest
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 
@@ -36,7 +37,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             editData()
         }
         loadData()
+        initLoadAds()
     }
+
+    private fun initLoadAds() {
+        val adRequest = AdRequest.Builder().build()
+        binding.adViewProfile.loadAd(adRequest)
+    }
+
     private fun loadData(){
         viewModel.fetchUserL.observe(viewLifecycleOwner, Observer { resultUser ->
             when (resultUser) {

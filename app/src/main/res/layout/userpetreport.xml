@@ -63,7 +63,7 @@
                 android:layout_gravity="right"
                 app:icon="@drawable/ic_pets"
                 android:layout_margin="10dp"
-                android:text="Reportar"/>
+                android:text="Anular"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </LinearLayout>

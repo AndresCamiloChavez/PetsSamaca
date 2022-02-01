@@ -34,6 +34,7 @@
             android:layout_alignParentBottom="true"
             ads:adSize="BANNER"
             ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+<!--of            ads:adUnitId="ca-app-pub-4333684413954247/8883936031">-->
         </com.google.android.gms.ads.AdView>
     </com.google.android.material.appbar.AppBarLayout>
     <fragment
@@ -43,7 +44,8 @@
         android:layout_height="0dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
-        app:layout_constraintTop_toBottomOf="@+id/AppBar" />
+        app:layout_constraintTop_toBottomOf="@+id/AppBar"
+        app:navGraph="@navigation/nav_graph"/>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"

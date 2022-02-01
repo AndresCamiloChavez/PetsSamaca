@@ -84,7 +84,7 @@ class UserReportsFragment : Fragment(R.layout.fragment_user_reports),
                                 .show()
                         }
                         is Resource.Failure -> {
-                            Log.d("report", "${it.e}")
+//                            Log.d("report", "${it.e}")
                             Toast.makeText(
                                 requireContext(),
                                 "Ocurrió un error al eliminar",

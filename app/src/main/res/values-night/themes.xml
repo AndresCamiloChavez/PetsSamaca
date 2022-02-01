@@ -46,4 +46,8 @@
         <item name="colorShadow">@color/md_theme_dark_shadow</item>-->
         <item name="colorPrimaryInverse">@color/md_theme_dark_primaryInverse</item>
     </style>
+    <style name="spalashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <!--        <item name="android:delay">3s</item>-->
+    </style>
 </resources>

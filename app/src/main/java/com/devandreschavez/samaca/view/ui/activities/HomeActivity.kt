@@ -34,8 +34,8 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         initLoadAds()
         initLoadAdsinterstitial()
-//        configNav()
-        configPerNav()
+        configNav()
+//        configPerNav()
         binding.topAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.exitOption -> {
@@ -81,7 +81,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onUserInteraction() {
         super.onUserInteraction()
         count++
-        Log.d("Home", "Cantidad: ${count}")
+//        Log.d("Home", "Cantidad: ${count}")
         if (count == 20) {
             showAd()
             count = 0
@@ -94,6 +94,7 @@ class HomeActivity : AppCompatActivity() {
         var adRequest = AdRequest.Builder().build()
         InterstitialAd.load(
             this,
+//            of "ca-app-pub-4333684413954247/6469278269",
             "ca-app-pub-3940256099942544/1033173712",
             adRequest,
             object : InterstitialAdLoadCallback() {

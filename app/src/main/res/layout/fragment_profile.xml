@@ -100,6 +100,7 @@
            android:layout_alignParentBottom="true"
            ads:adSize="SMART_BANNER"
            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+<!--of           ads:adUnitId="ca-app-pub-4333684413954247/5886183707">-->
        </com.google.android.gms.ads.AdView>
    </androidx.appcompat.widget.LinearLayoutCompat>
 

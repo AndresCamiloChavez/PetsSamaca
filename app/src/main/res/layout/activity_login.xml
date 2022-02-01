@@ -5,34 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ui.activities.LoginActivity">
-
-
-
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    >
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:src="@mipmap/ic_launcher" />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingVertical="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="Bienvenid@"
+        android:textStyle="bold"
+        android:textSize="40dp"
 
-
+        />
+</RelativeLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
         style="@style/MyCard"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:translationY="-35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal"
-        app:layout_constraintVertical_bias="0.4">
-
-
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -42,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
+                android:paddingVertical="10dp"
                 android:text="@string/login_title"
                 android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
                 android:textStyle="bold" />
@@ -116,6 +124,7 @@
                     style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     android:text="@string/login_create" />
             </LinearLayout>
         </RelativeLayout>

@@ -67,6 +67,7 @@ class PetsFragment : Fragment(R.layout.fragment_pets), PetsAdapter.onPetClickLis
 //        tryToGetDynamicLink()
     }
 
+
     override fun onItemClick(petUser: PetUser) {
         val action = PetsFragmentDirections.actionPetsFragmentToDetailPetFragment(petUser)
         findNavController().navigate(action)
